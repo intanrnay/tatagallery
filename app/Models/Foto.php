@@ -18,7 +18,7 @@ class Foto extends Model
         'lokasi_file',
     ];
 
-    public function album()
+    public function albums()
     {
         return $this->belongsToMany(Album::class);
     }

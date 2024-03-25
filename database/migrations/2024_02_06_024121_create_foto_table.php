@@ -17,10 +17,8 @@ return new class extends Migration
             $table->text('deskripsi_foto');
             $table->date('tanggal_unggah');
             $table->string('lokasi_file');
-            $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('id')->on('album');            
-            $table->unsignedBigInteger('user_id');            
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('albums_id')->references('id')->on('albums');                        
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
