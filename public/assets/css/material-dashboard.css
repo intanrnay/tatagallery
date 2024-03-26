@@ -6402,6 +6402,10 @@ fieldset:disabled .btn {
     padding-left: 1.5rem !important;
 }
 
+.px-7 {
+    padding-right: 6rem !important;
+    padding-left: 6rem !important;
+}
 
 .py-4 {
     padding-top: 1.5rem !important;
@@ -15807,7 +15811,7 @@ body.dark-version {
 }
 
 
-.form-control {
+/* .form-control {
     border: none;
 }
 .form-control.is-invalid {
@@ -15829,7 +15833,7 @@ body.dark-version {
 .form-control[disabled] {
     padding: 0.625rem 0.75rem;
     line-height: 1.45 !important;
-}
+} */
 
 .input-group .input-group-text {
     position: absolute;
@@ -18447,5 +18451,7 @@ p {
     }
 }
 
+.d-flex {
+    display: flex !important;
+}
 
-/*# sourceMappingURL=material-dashboard.css.map */

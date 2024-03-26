@@ -20,12 +20,92 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
 </head>
 
 <body class="">
   <main class="main-content  mt-0">
     <section>
-      <div class="page-header min-vh-100">
+     <div class="container"> 
+      {{-- <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5"> --}}
+      <form action="/sign-up" class="form" method="POST">
+        @csrf
+        <p class="title">Register </p>
+        <p class="message">Signup now and get full access to our app. </p>
+         
+        <label>
+        <input type="text" name="fullname" class="input @error('fullname') is-invalid @enderror" id="fullname" required value="{{  old('fullname') }}">
+        <span>Fullname</span>  
+          @error('fullname')
+          <div class="invalid-feedback">
+            {{  $message }}
+          </div>
+          @enderror
+        </label>
+
+        <label>
+        <input type="text" name="name" class="input @error('name') is-invalid @enderror" id="name" required value="{{  old('name') }}">
+        <span>Nickname</span>
+          @error('name')
+          <div class="invalid-feedback">
+            {{  $message }}
+          </div>
+          @enderror
+        </label>
+          
+        <label>
+          <input type="text" name="address" class="input @error('address') is-invalid @enderror" id="address" required value="{{  old('address') }}">
+            <span>Address</span>
+            @error('address')
+            <div class="invalid-feedback">
+              {{  $message }}
+            </div>
+            @enderror
+        </label> 
+            
+        <label>
+          <input type="text" name="username" class="input @error('username') is-invalid @enderror" id="username" required="min:7|max:15|unique:users" value="{{  old('username') }}">
+            <span>Username</span>
+            @error('username')
+            <div class="invalid-feedback">
+              {{  $message }}
+            </div>
+            @enderror
+        </label>
+
+        <label>
+          <input type="text" name="email" class="input @error('email') is-invalid @enderror" id="email" required="email:dns|unique:users" value="{{  old('email') }}">
+            <span>Email</span>
+            @error('email')
+            <div class="invalid-feedback">
+              {{  $message }}
+            </div>
+            @enderror
+        </label>
+
+        <label>
+          <input type="password" name="password" class="input @error('password') is-invalid @enderror" id="password" required="">
+            <span>Password</span>
+            @error('password')
+            <div class="invalid-feedback">
+              {{  $message }}
+            </div>
+            @enderror
+        </label>
+
+        {{-- <label>
+            <input required="" placeholder="" type="password" class="input">
+            <span>Confirm password</span>
+        </label> --}}
+        <button class="submit">Submit</button>
+        <p class="signin">Already have an acount? <a href="/sign-in">Signin</a> </p>
+         </form>
+        </div>
+      </div>
+
+
+      {{-- <div class="page-header min-vh-100">
         <div class="container">
           <div class="row">
             <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
@@ -110,27 +190,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </section>
   </main>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.min.js?v=3.0.0"></script>
 </body>
 
 </html>

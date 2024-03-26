@@ -3,7 +3,7 @@
 @section('content')
 
 <a type="button" class="post" href="/creating">
-  <span>Create New Post</span>
+  <span>Create New</span>
 </a>
 
 @endsection

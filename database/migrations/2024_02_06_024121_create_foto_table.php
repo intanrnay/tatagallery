@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi_foto');
             $table->date('tanggal_unggah');
             $table->string('lokasi_file');
-            $table->foreignId('albums_id')->references('id')->on('albums');                        
+            $table->foreignId('album_id')->references('id')->on('album');                        
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

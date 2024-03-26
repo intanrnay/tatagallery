@@ -45,8 +45,8 @@ Route::get('/sign-up', function () {
     ]);
 });
 
-Route::get('/creating', function () {
-    return view('pages.creating', [
+Route::get('/createfoto', function () {
+    return view('pages.fotoaction.createfoto', [
         "title" => "Create New Post"
     ]);
 });
