@@ -219,15 +219,6 @@ a:hover {
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
 @endif
-
-  {{-- @if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      @foreach($errors->all() as $e)
-      {{ $e }}
-      @endforeach
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  @endif --}}
   
   <div class="wrapper bg-white">
     <div class="h2 text-center">Bluespace</div>
@@ -250,9 +241,10 @@ a:hover {
             </div>
         </div>
         <div class="d-flex align-items-start">
-            <div class="remember"> <label class="option text-muted"> Remember me <input type="radio" name="radio"> <span class="checkmark"></span> </label> </div>
-            <div class="ml-auto"> <a href="#" id="forgot">Forgot Password?</a> </div>
-        </div> <button type="submit" class="btn btn-block text-center my-3">Log in</button>
+            {{-- <div class="remember"> <label class="option text-muted"> Remember me <input type="radio" name="radio"> <span class="checkmark"></span> </label> </div><br> --}}
+            {{-- <div class="ml-99"> <a href="#" id="forgot">Forgot Password?</a> </div> --}}
+        </div>
+        <center><button type="submit" class="btn btn-block text-center my-3">Log in</button></center>
         <div class="text-center pt-3 text-muted">Not a member? <a href="/sign-up">Sign up</a></div>
     </form>
 </div>

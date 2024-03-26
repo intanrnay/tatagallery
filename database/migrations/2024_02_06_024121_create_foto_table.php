@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('deskripsi_foto')->nullable();
             $table->date('tanggal_unggah');
             $table->string('lokasi_file');
-            $table->foreignId('album_id')->nullable()->constrained('album')->onDelete('set null');                        
+            $table->foreignId('album_id')->nullable()->constrained('albums')->onDelete('set null');                        
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

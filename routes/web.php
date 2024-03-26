@@ -46,11 +46,6 @@ Route::get('/sign-up', function () {
     ]);
 });
 
-Route::get('/createfoto', function () {
-    return view('pages.fotoaction.createfoto', [
-        "title" => "Create New Post"
-    ]);
-});
 
 
 Route::get('/sign-in', [SigninController::class, 'index'])->name('login')->middleware('guest');
@@ -61,8 +56,9 @@ Route::post('/logout', [SigninController::class, 'logout']);
 
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
+Route::get ('/createfoto', [FotoController::class, 'index']);
 Route::post('/upload/photo', [FotoController::class, 'upload'])->name('upload.photo');
 
 Route::get('/createalbum', [AlbumController::class, 'index']);
-
+Route::post('/album/new', [AlbumController::class, 'store'])->name('album.new');
 // Route::get('/creating', [PostController::class, 'index']);
