@@ -1,12 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FotoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 
@@ -61,5 +62,7 @@ Route::post('/logout', [SigninController::class, 'logout']);
 Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
 Route::post('/upload/photo', [FotoController::class, 'upload'])->name('upload.photo');
+
+Route::get('/createalbum', [AlbumController::class, 'index']);
 
 // Route::get('/creating', [PostController::class, 'index']);

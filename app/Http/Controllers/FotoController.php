@@ -13,13 +13,14 @@ class FotoController extends Controller
         'lokasi_file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // max file size 2MB
         'judul_foto' => 'required|string|max:255',
         'deskripsi_foto' => 'required|string',
+        'album_id' => 'nullable','user_id' => 'required'
     ]);
 
     if ($request->hasFile('lokasi_file')) {
-        // Get the file from the request
+  
         $file = $request->file('lokasi_file');
 
-        // Generate a unique filename for the photo
+
         $filename = time() . '_' . $file->getClientOriginalName();
 
         // Move the uploaded file to the storage directory
@@ -27,6 +28,7 @@ class FotoController extends Controller
 
         $foto = new Foto();
         $foto->judul_foto = $request->judul_foto;
+        $foto->user_id = $request->user_id;
         $foto->deskripsi_foto = $request->deskripsi_foto;
         $foto->lokasi_file = $filename;
         $foto->tanggal_unggah = now();

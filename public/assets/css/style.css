@@ -259,9 +259,9 @@ button .photo {
     padding: 20px;
     border-radius: 20px;
     position: relative;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 28px;
     color: royalblue;
     font-weight: 600;
@@ -270,9 +270,10 @@ button .photo {
     display: flex;
     align-items: center;
     padding-left: 30px;
-  }
-  
-  .title::before,.title::after {
+}
+
+.title::before,
+.title::after {
     position: absolute;
     content: "";
     height: 16px;
@@ -280,56 +281,57 @@ button .photo {
     border-radius: 50%;
     left: 0px;
     background-color: royalblue;
-  }
-  
-  .title::before {
+}
+
+.title::before {
     width: 18px;
     height: 18px;
     background-color: royalblue;
-  }
-  
-  .title::after {
+}
+
+.title::after {
     width: 18px;
     height: 18px;
     animation: pulse 1s linear infinite;
-  }
-  
-  .message, .signin {
+}
+
+.message,
+.signin {
     color: rgba(88, 87, 87, 0.822);
     font-size: 14px;
-  }
-  
-  .signin {
+}
+
+.signin {
     text-align: center;
-  }
-  
-  .signin a {
+}
+
+.signin a {
     color: royalblue;
-  }
-  
-  .signin a:hover {
+}
+
+.signin a:hover {
     text-decoration: underline royalblue;
-  }
-  
-  .flex {
+}
+
+.flex {
     display: flex;
     width: 100%;
     gap: 6px;
-  }
-  
-  .form label {
+}
+
+.form label {
     position: relative;
-  }
-  
-  .form label .input {
+}
+
+.form label .input {
     width: 100%;
     padding: 10px 10px 20px 10px;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
-  }
-  
-  .form label .input + span {
+}
+
+.form label .input + span {
     position: absolute;
     left: 10px;
     top: 15px;
@@ -337,24 +339,25 @@ button .photo {
     font-size: 0.9em;
     cursor: text;
     transition: 0.3s ease;
-  }
-  
-  .form label .input:placeholder-shown + span {
+}
+
+.form label .input:placeholder-shown + span {
     top: 15px;
     font-size: 0.9em;
-  }
-  
-  .form label .input:focus + span,.form label .input:valid + span {
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
     top: 30px;
     font-size: 0.7em;
     font-weight: 600;
-  }
-  
-  .form label .input:valid + span {
+}
+
+.form label .input:valid + span {
     color: green;
-  }
-  
-  .submit {
+}
+
+.submit {
     border: none;
     outline: none;
     background-color: royalblue;
@@ -362,21 +365,82 @@ button .photo {
     border-radius: 10px;
     color: #fff;
     font-size: 16px;
-    transform: .3s ease;
-  }
-  
-  .submit:hover {
+    transform: 0.3s ease;
+}
+
+.submit:hover {
     background-color: rgb(56, 90, 194);
-  }
-  
-  @keyframes pulse {
+}
+
+@keyframes pulse {
     from {
-      transform: scale(0.9);
-      opacity: 1;
+        transform: scale(0.9);
+        opacity: 1;
     }
-  
+
     to {
-      transform: scale(1.8);
-      opacity: 0;
+        transform: scale(1.8);
+        opacity: 0;
     }
+}
+
+.cardy {
+    width: 350px;
+    height: 254px;
+    padding: 0 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.card > * {
+    margin: 0;
+}
+
+.card__title {
+    font-size: 23px;
+    font-weight: 900;
+    color: #333;
+}
+
+.card__content {
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+}
+
+.card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
   }
+  
+  .card__form input {
+    margin-top: 10px;
+    outline: 0;
+    background: rgb(255, 255, 255);
+    box-shadow: transparent 0px 0px 0px 1px inset;
+    padding: 0.6em;
+    border-radius: 14px;
+    border: 1px solid #333;
+    color: black;
+    width: 200px;
+}
+
+.card__form button {
+    border: 0;
+    background: #111;
+    color: #fff;
+    padding: 0.68em;
+    border-radius: 14px;
+    font-weight: bold;
+}
+
+.new-album:hover {
+    opacity: 0.8;
+}

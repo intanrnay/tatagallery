@@ -11,11 +11,6 @@ class Album extends Model
 
     protected $guarded = ['id'];
     protected $table = ['album'];
-    protected $fillable = [
-        'nama_album',
-        'deskripsi',
-        'tanggal_dibuat',
-    ];
 
     public function user()
     {

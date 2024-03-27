@@ -1,9 +1,9 @@
 @extends('main')
 
 @section('content')
-
 <form class="file-upload-form" action="{{ route('upload.photo') }}" method="post" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="user_id" value="{{ Auth()->user()->id }}">
     <div class="form-container-00">
         <p class="title">New Post</p>
     <div class="container"> 

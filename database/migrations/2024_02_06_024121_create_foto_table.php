@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('foto', function (Blueprint $table) {
             $table->id();
             $table->string('judul_foto');
-            $table->text('deskripsi_foto');
+            $table->text('deskripsi_foto')->nullable();
             $table->date('tanggal_unggah');
             $table->string('lokasi_file');
-            $table->foreignId('album_id')->references('id')->on('album');                        
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('album_id')->nullable()->constrained('album')->onDelete('set null');                        
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }
