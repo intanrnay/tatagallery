@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_album');
             $table->text('deskripsi');
-            $table->date('tanggal_dibuat');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->string('tanggal_dibuat');
+            $table->timestamps();
         });
     }
 

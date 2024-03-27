@@ -39,7 +39,7 @@ class FotoController extends Controller
         $foto->tanggal_unggah = now();
         $foto->save();
 
-        return response()->json(['message' => 'Photo uploaded successfully', 'filename' => $filename]);
+        return redirect('/studio');
     }
 
     return response()->json(['message' => 'No photo uploaded'], 400);

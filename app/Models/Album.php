@@ -10,7 +10,7 @@ class Album extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $table = ['album'];
+    protected $table = 'albums';
 
     public function user()
     {
