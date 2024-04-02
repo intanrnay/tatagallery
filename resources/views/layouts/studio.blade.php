@@ -10,11 +10,7 @@
   </div>
 </div>
 
-<div class="col-md-4">
-  @foreach ($fotos as $foto)
-    <div class="display-foto"><a href="">
-      <img src="{{ asset('storage/foto/'.$foto->lokasi_file) }}"></a></div>
-  @endforeach
 
-</div>
+
+
 @endsection

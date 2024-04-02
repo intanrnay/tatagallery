@@ -23,11 +23,11 @@ use App\Http\Controllers\SignupController;
 */
 
 
-Route::get('/studio', function () {
-    return view('layouts.studio', [
-        "title" => "Studio"
-    ]);
-});
+// Route::get('/studio', function () {
+//     return view('layouts.studio', [
+//         "title" => "Studio"
+//     ]);
+// });
 
 
 
@@ -41,7 +41,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get ('/createfoto', [FotoController::class, 'create']);
 Route::post('/upload/photo', [FotoController::class, 'upload'])->name('upload.photo');
-
+Route::get('/studio', [FotoController::class, 'index'])->name('layouts.studio');
 Route::get('/createalbum', [AlbumController::class, 'create']);
 Route::post('/album/new', [AlbumController::class, 'store'])->name('album.new');
 // Route::get('/creating', [PostController::class, 'index']);

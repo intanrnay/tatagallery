@@ -9,14 +9,8 @@ class Foto extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['fotoid'];
+    protected $guarded = ['id'];
     protected $table = 'foto';
-    protected $fillable = [
-        'judul_foto',
-        'deskripsi_foto',
-        'tanggal_unggah',
-        'lokasi_file',
-    ];
 
     public function album()
     {
