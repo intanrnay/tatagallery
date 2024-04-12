@@ -8,6 +8,8 @@ use App\Http\Controllers\FotoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\SigninController;
 use App\Http\Controllers\SignupController;
 
@@ -30,6 +32,10 @@ Route::get('/studio', function () {
 });
 
 
+// Route Like And Comment
+Route::post('/albums/{photo}/toggle-like', [LikeController::class, 'toggle'])->name('likes.toggle');
+Route::get('/albums/{photo}/check-like', [LikeController::class, 'checkLike'])->name('likes.check');
+Route::post('/photos/{photo}/komentar', [KomentarController::class, 'store'])->name('komentar.store');
 
 Route::get('/sign-in', [SigninController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sign-in', [SigninController::class, 'authenticate']);
@@ -42,6 +48,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get ('/createfoto', [FotoController::class, 'create']);
 Route::post('/upload/photo', [FotoController::class, 'upload'])->name('upload.photo');
 Route::get('/foto', [FotoController::class, 'index'])->name('foto');
-Route::get('/createalbum', [AlbumController::class, 'create']);
+Route::get('/createalbum', [AlbumController::class, 'index']);
 Route::post('/album/new', [AlbumController::class, 'store'])->name('album.new');
+Route::post('foto/{photo}/update-album', [FotoController::class, 'updateAlbum'])->name('foto.update.album');
 // Route::get('/creating', [PostController::class, 'index']);

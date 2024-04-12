@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('nama_album');
             $table->text('deskripsi');
-            $table->string('tanggal_dibuat');
             $table->timestamps();
         });
     }

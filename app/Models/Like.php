@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Album extends Model
+class Like extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    protected $fillable = ['nama_album', 'deskripsi'];
-    protected $table = 'albums';
+    protected $table = 'likefoto';
+    protected $fillable = [
+        'user_id', 'foto_id'
+    ];
 
     public function user()
     {
@@ -20,6 +21,6 @@ class Album extends Model
 
     public function foto()
     {
-        return $this->hasMany(Foto::class);
+        return $this->belongsTo(Foto::class);
     }
 }
