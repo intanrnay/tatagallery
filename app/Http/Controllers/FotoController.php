@@ -18,7 +18,7 @@ class FotoController extends Controller
     {
         $foto = Foto::all();
         return view('foto', [
-            "title" => "Studio",
+            "title" => "foto",
             "foto" => $foto
         ]);
     }
@@ -50,6 +50,7 @@ class FotoController extends Controller
         $foto->save();
         
         return redirect('studio');
+        
     }
 
     return response()->json(['message' => 'No photo uploaded'], 400);

@@ -1679,36 +1679,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
     color: #000;
-    background-color: #0f4eba;
+    background-color: #1048a89a;
     border-color: #0f4eba;
-}
-.btn-primary:hover {
-    color: #000;
-    background-color: #ec407a;
-    border-color: #eb3573;
-}
-.btn-check:focus + .btn-primary,
-.btn-primary:focus {
-    color: #000;
-    background-color: #ec407a;
-    border-color: #eb3573;
-    box-shadow: 0 0 0 0.2rem rgba(198, 26, 84, 0.5);
-}
-.btn-check:checked + .btn-primary,
-.btn-check:active + .btn-primary,
-.btn-primary:active,
-.btn-primary.active,
-.show > .btn-primary.dropdown-toggle {
-    color: #000;
-    background-color: #ed4b82;
-    border-color: #eb3573;
-}
-.btn-check:checked + .btn-primary:focus,
-.btn-check:active + .btn-primary:focus,
-.btn-primary:active:focus,
-.btn-primary.active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(198, 26, 84, 0.5);
 }
 .btn-primary:disabled,
 .btn-primary.disabled {
@@ -14192,40 +14164,6 @@ fieldset:disabled .btn {
     transform: translateX(-5px);
 }
 
-.btn-primary,
-.btn.bg-gradient-primary {
-    box-shadow: 0 3px 3px 0 rgba(233, 30, 99, 0.15),
-        0 3px 1px -2px rgba(233, 30, 99, 0.2),
-        0 1px 5px 0 rgba(233, 30, 99, 0.15);
-}
-.btn-primary:hover,
-.btn.bg-gradient-primary:hover {
-    background-color: #0f4eba;
-    border-color: #0f4eba;
-    box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.4),
-        0 4px 23px 0 rgba(233, 30, 99, 0.15),
-        0 8px 10px -5px rgba(233, 30, 99, 0.2);
-}
-.btn-primary .btn.bg-outline-primary,
-.btn.bg-gradient-primary .btn.bg-outline-primary {
-    border: 1px solid #0f4eba;
-}
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show > .btn-primary.dropdown-toggle,
-.btn.bg-gradient-primary:not(:disabled):not(.disabled).active,
-.btn.bg-gradient-primary:not(:disabled):not(.disabled):active,
-.show > .btn.bg-gradient-primary.dropdown-toggle {
-    color: color-yiq(#0f4eba);
-    background-color: #0f4eba;
-}
-.btn-primary.focus,
-.btn-primary:focus,
-.btn.bg-gradient-primary.focus,
-.btn.bg-gradient-primary:focus {
-    color: #fff;
-}
-
 .btn-outline-primary {
     box-shadow: none;
 }
@@ -14581,11 +14519,10 @@ fieldset:disabled .btn {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.btn-primary,
 .btn.bg-gradient-primary {
     color: #fff;
 }
-.btn-primary:hover,
+
 .btn.bg-gradient-primary:hover {
     color: #fff;
 }

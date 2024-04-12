@@ -1,34 +1,111 @@
 @extends('main')
 @section('content')
-<div class="col-md-4">
-    @foreach ($foto as $item)
-    <div class="card d-flex" style="width: 300px">
-        <img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" alt="">
-            {{-- <P>{{$item->judul_foto}}</P>
-            <P>{{$item->deskripsi_foto}}</P>
-            <P>{{$item->tanggal_unggah}}</P> --}}
-    </div>
-    @endforeach
-</div>
+            {{-- <P>{{$item->tanggal_unggah}}</P> --}}
+<style>
+.grid-container-01 {
+    display: grid;
+    grid-template: auto / 12rem 12rem 12rem 12rem;
+    grid-gap: 13px;
+    grid-column: auto;
+    grid-template-areas: 'myArea myArea . . .';
+    align-items: start;
+}
 
-<div class="card-03">
-    <div class="card-foto"></div>
-    <div class="card-inform">
-        <p class="text-judul">Product title </p>
-        <p class="text-dalem-01">Product description and details</p>
-    </div>
-    <div class="card-akhir-01">
-        <span class="text-dalem-01">$499.49</span>
-        <div class="card-tombol-01">
-            <svg class="svg-icon" viewBox="0 0 20 20">
-                <path d="M17.72,5.011H8.026c-0.271,0-0.49,0.219-0.49,0.489c0,0.271,0.219,0.489,0.49,0.489h8.962l-1.979,4.773H6.763L4.935,5.343C4.926,5.316,4.897,5.309,4.884,5.286c-0.011-0.024,0-0.051-0.017-0.074C4.833,5.166,4.025,4.081,2.33,3.908C2.068,3.883,1.822,4.075,1.795,4.344C1.767,4.612,1.962,4.853,2.231,4.88c1.143,0.118,1.703,0.738,1.808,0.866l1.91,5.661c0.066,0.199,0.252,0.333,0.463,0.333h8.924c0.116,0,0.22-0.053,0.308-0.128c0.027-0.023,0.042-0.048,0.063-0.076c0.026-0.034,0.063-0.058,0.08-0.099l2.384-5.75c0.062-0.151,0.046-0.323-0.045-0.458C18.036,5.092,17.883,5.011,17.72,5.011z"></path>
-                <path d="M8.251,12.386c-1.023,0-1.856,0.834-1.856,1.856s0.833,1.853,1.856,1.853c1.021,0,1.853-0.83,1.853-1.853S9.273,12.386,8.251,12.386z M8.251,15.116c-0.484,0-0.877-0.393-0.877-0.874c0-0.484,0.394-0.878,0.877-0.878c0.482,0,0.875,0.394,0.875,0.878C9.126,14.724,8.733,15.116,8.251,15.116z"></path>
-                <path d="M13.972,12.386c-1.022,0-1.855,0.834-1.855,1.856s0.833,1.853,1.855,1.853s1.854-0.83,1.854-1.853S14.994,12.386,13.972,12.386z M13.972,15.116c-0.484,0-0.878-0.393-0.878-0.874c0-0.484,0.394-0.878,0.878-0.878c0.482,0,0.875,0.394,0.875,0.878C14.847,14.724,14.454,15.116,13.972,15.116z"></path>
-            </svg>
+.modal-body {
+}
+
+.detail-foto {
+    max-width: auto;
+    max-height: 280px;
+}
+
+.card-02 {
+    display: flex;
+    align-items: flex-start;
+}
+
+.col-md-4 {
+    flex: 0 0 auto;
+}
+
+.col-md-5 {
+    flex: 1 1 auto;
+}
+
+</style>
+
+<div class="grid-container-01">
+@foreach ($foto as $item)
+    <div class="card-03">
+        <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
+            <div class="card-inform">
+            <p class="text-judul"> {{$item->judul_foto}} </p>
+            <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
+        </div>
+        <div class="card-akhir-01">
+            <span class="text-dalem-01">
+                @php
+                $users = App\Models\User::where('id', $item->foto_id)->get();
+                @endphp
+                @foreach($users as $user)
+                <b>@auth {{ $user->username }} @endauth</b>
+                @endforeach</span>
+            <div class="card-tombol-01">
+                    <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
+            </div>
         </div>
     </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="ContohModal{{$item->id}}" tabindex="-1" aria-labelledby="contohModalLabel" aria-hidden="true">
+    <div class="modal-dialog" >
+      <div class="modal-content" style="width: 670px">
+            <div class="modal-header">
+            <h5 class="modal-title" id="contohModalLabel">Detail Post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <div class="card-02">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" class="detail-foto">
+                    </div>
+                </div>
+                <form id="like-form-{{$photo->id}}" method="POST" action="{{ route('likes.toggle', $photo->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm card-text float-end">❤</button>
+                    </form>
+                    <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary float-start">View</a>
+                </div>
+                <!-- Form Komentar -->
+                <form class="card-footer" method="POST" action="{{ route('comments.store', $photo->id) }}">
+                    @csrf
+                    <div class="input-group">
+                        <textarea name="content" class="form-control" rows="3" placeholder="Add a comment"></textarea>
+                        <button type="submit" class="btn btn-success">Comment</button>
+                    </div>
+                </form>
+                <!-- Daftar Komentar -->
+                <div class="list-group list-group-flush">
+                    @foreach ($photo->photoComments as $comment)
+                        <div class="list-group-item">
+                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->name }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
+                            <p class="list-group-item-text">{{ $comment->content }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+      </div>
+    </div>
+  </div>
+    @endforeach
 </div>
-
 
 
 @endsection
