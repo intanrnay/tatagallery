@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Foto;
+use App\Models\Komentar;
+use App\Models\Album;
 
 class FotoController extends Controller
 {
@@ -17,12 +19,16 @@ class FotoController extends Controller
     public function index ()
     {
         $foto = Foto::all();
+        $komentar = Komentar::all();
+        $albums = Album::all();
         return view('foto', [
             "title" => "foto",
-            "foto" => $foto
+            "foto" => $foto ,
+            "comments" => $komentar,
+            "albums" => $albums
         ]);
     }
-    
+
     public function upload(Request $request)
     {
         $request->validate([
@@ -33,10 +39,10 @@ class FotoController extends Controller
     ]);
 
     if ($request->hasFile('lokasi_file')) {
-  
+
         $file = $request->file('lokasi_file');
-        
-        
+
+
         $filename = time() . '_' . $file->hashName();
 
         $file->move(public_path('storage/foto'), $filename);
@@ -48,12 +54,24 @@ class FotoController extends Controller
         $foto->lokasi_file = $filename;
         $foto->tanggal_unggah = now();
         $foto->save();
-        
+
         return redirect('studio');
-        
+
     }
 
     return response()->json(['message' => 'No photo uploaded'], 400);
 }
+    public function updateAlbum(Request $request, $photoId)
+    {
+        $request->validate([
+            'album_id' => 'required|exists:albums,id',
+        ]);
+
+        $foto = Foto::findOrFail($photoId);
+        $foto->album_id = $request->album_id;
+        $foto->save();
+
+        return redirect()->back()->with('success', 'Photo added to album successfully.');
+    }
 
 }

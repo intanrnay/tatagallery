@@ -41,6 +41,7 @@
             <div class="card-inform">
             <p class="text-judul"> {{$item->judul_foto}} </p>
             <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
+            <p class="text-dalem-01"> {{$item->album->nama_album}} </p>
         </div>
         <div class="card-akhir-01">
             <span class="text-dalem-01">
@@ -52,10 +53,11 @@
                 @endforeach</span>
             <div class="card-tombol-01">
                     <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
+                    <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
             </div>
         </div>
     </div>
-  
+
   <!-- Modal -->
   <div class="modal fade" id="ContohModal{{$item->id}}" tabindex="-1" aria-labelledby="contohModalLabel" aria-hidden="true">
     <div class="modal-dialog" >
@@ -71,39 +73,66 @@
                         <img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" class="detail-foto">
                     </div>
                 </div>
-                <form id="like-form-{{$photo->id}}" method="POST" action="{{ route('likes.toggle', $photo->id) }}">
+
+                <form id="like-form-{{$item->id}}" method="POST" action="{{ route('likes.toggle', ['photo' => $item->id]) }}">
                         @csrf
                         <button type="submit" class="btn btn-danger btn-sm card-text float-end">❤</button>
                     </form>
-                    <a href="{{route('photos.show' , $photo->id)}}" class="btn btn-primary float-start">View</a>
+                    <p>{{ $item->like->count() }}</p>
                 </div>
                 <!-- Form Komentar -->
-                <form class="card-footer" method="POST" action="{{ route('comments.store', $photo->id) }}">
+                <form class="card-footer" method="POST" action="{{ route('komentar.store', ['photo' => $item->id]) }}">
                     @csrf
                     <div class="input-group">
-                        <textarea name="content" class="form-control" rows="3" placeholder="Add a comment"></textarea>
+                        <textarea name="isi_komentar" class="form-control" rows="3" placeholder="Add a comment"></textarea>
                         <button type="submit" class="btn btn-success">Comment</button>
                     </div>
                 </form>
                 <!-- Daftar Komentar -->
+                @if ($comments)
                 <div class="list-group list-group-flush">
-                    @foreach ($photo->photoComments as $comment)
+                    @foreach ($comments as $comment)
                         <div class="list-group-item">
-                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->name }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
-                            <p class="list-group-item-text">{{ $comment->content }}</p>
+                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
+                            <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
                         </div>
                     @endforeach
                 </div>
+            @else
+                <p>Tidak ada komentar.</p>
+            @endif
+
             </div>
         </div>
             </div>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
       </div>
     </div>
   </div>
+
+{{-- modal 2 --}}
+<div class="modal fade" id="Albummodal{{$item->id}}" tabindex="-1" aria-labelledby="AlbummodalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width: 670px">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contohModalLabel">Masukan Kedalam Albums</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('foto.update.album', ['photo' => $item->id]) }}">
+                    @csrf
+                    <select name="album_id" class="form-control">
+                        @foreach($albums as $album)
+                            <option value="{{ $album->id }}">{{ $album->nama_album }}</option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     @endforeach
 </div>
 
