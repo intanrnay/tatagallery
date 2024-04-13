@@ -19,7 +19,6 @@ class AlbumController extends Controller
             'user_id' => 'required',
             'nama_album' => 'required|unique:albums',
             'deskripsi' => 'required',
-            'tanggal_dibuat' => 'required',
         ]);
 Album::create($v);
 return redirect('/studio');

@@ -6,7 +6,7 @@
     <form action="{{ route('album.new') }}" method="POST">
     @csrf
     <input type="hidden" name='user_id' value="{{ Auth()->user()->id }}">
-    <input type="hidden" name='tanggal_dibuat' value="{{ now()}}">
+    {{-- <input type="hidden" name='tanggal_dibuat' value="{{ now()}}"> --}}
         <div class="cardy">
             <span class="card__title">Create New Album</span>
                 <div class="card__form">

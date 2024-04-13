@@ -41,7 +41,7 @@
             <div class="card-inform">
             <p class="text-judul"> {{$item->judul_foto}} </p>
             <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
-            <p class="text-dalem-01"> {{$item->album->nama_album}} </p>
+            <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
         </div>
         <div class="card-akhir-01">
             <span class="text-dalem-01">
@@ -115,7 +115,7 @@
     <div class="modal-dialog">
         <div class="modal-content" style="width: 670px">
             <div class="modal-header">
-                <h5 class="modal-title" id="contohModalLabel">Masukan Kedalam Albums</h5>
+                <h5 class="modal-title" id="contohModalLabel">Masukan Ke dalam Album</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
