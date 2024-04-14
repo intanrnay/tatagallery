@@ -11,25 +11,23 @@
     align-items: start;
 }
 
-.modal-body {
-}
-
 .detail-foto {
-    max-width: auto;
-    max-height: 280px;
+    max-width: 100%;
+    max-height: auto;
 }
 
 .card-02 {
     display: flex;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .col-md-4 {
     flex: 0 0 auto;
 }
 
-.col-md-5 {
-    flex: 1 1 auto;
+.col-md-7, .col-md-5 {
+    flex: 1 1 50%;
 }
 
 </style>
@@ -58,64 +56,78 @@
         </div>
     </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="ContohModal{{$item->id}}" tabindex="-1" aria-labelledby="contohModalLabel" aria-hidden="true">
-    <div class="modal-dialog" >
-      <div class="modal-content" style="width: 670px">
+<!-- Modal -->
+<div class="modal fade" id="ContohModal{{$item->id}}" tabindex="-1" aria-labelledby="contohModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 900px;">
+        <div class="modal-content" style="width: auto">
             <div class="modal-header">
-            <h5 class="modal-title" id="contohModalLabel">Detail Post</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="contohModalLabel">Detail Post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <div class="card-02">
-                <div class="row g-0">
-                    <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-7">
                         <img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" class="detail-foto">
                     </div>
-                </div>
-
-                <form id="like-form-{{$item->id}}" method="POST" action="{{ route('likes.toggle', ['photo' => $item->id]) }}">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm card-text float-end">❤</button>
-                    </form>
-                    <p>{{ $item->like->count() }}</p>
-                </div>
-                <!-- Form Komentar -->
-                <form class="card-footer" method="POST" action="{{ route('komentar.store', ['photo' => $item->id]) }}">
-                    @csrf
-                    <div class="input-group">
-                        <textarea name="isi_komentar" class="form-control" rows="3" placeholder="Add a comment"></textarea>
-                        <button type="submit" class="btn btn-success">Comment</button>
-                    </div>
-                </form>
-                <!-- Daftar Komentar -->
-                @if ($comments)
-                <div class="list-group list-group-flush">
-                    @foreach ($comments as $comment)
-                        <div class="list-group-item">
-                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
-                            <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
+                    <div class="col-md-5">
+                        <!-- Tombol Like dan Form Komentar -->
+                        <div class="like-comment-container">
+                            <!-- Tombol Like -->
+                            <div class="tombol-like">
+                                <form id="like-form-{{$item->id}}" method="POST" action="{{ route('likes.toggle', ['photo' => $item->id]) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger btn-sm card-text float-start">❤</button>
+                                    <span>{{ $item->like->count() }}</span>
+                                </form>
+                            </div>
+                            <!-- Form Komentar -->
+                            <form class="card-footer-01" method="POST" action="{{ route('komentar.store', ['photo' => $item->id]) }}">
+                                @csrf
+                                <div class="input-group-1">
+                                    <textarea name="isi_komentar" rows="1" placeholder="Add a comment"></textarea>
+                                    <button type="submit" class="tombol-komen"><i class="bi bi-chevron-compact-right"></i></button>
+                                </div>
+                            </form>
                         </div>
-                    @endforeach
-                </div>
-            @else
-                <p>Tidak ada komentar.</p>
-            @endif
+                        <!-- Daftar Komentar -->
+                        @if ($comments)
+                            <div class="list-group list-group-flush" style="overflow-y: auto; max-height: 200px;">
+                                {{-- @foreach ($comments as $comment)
+                                    <div class="list-group-item">
+                                        <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
+                                        <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
+                                    </div>
+                                @endforeach --}}
+                                @foreach ($comments as $comment)
+                                    {{-- @if ($comment->post_id == $user_id) --}}
+                                        <div class="list-group-item">
+                                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
+                                            <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
+                                        </div>
+                                    {{-- @endif --}}
+                                @endforeach
 
+                            </div>
+                        @else
+                            <p>Tidak ada komentar.</p>
+                        @endif
+                    </div>
+                </div>
             </div>
         </div>
-            </div>
-            </div>
-      </div>
     </div>
-  </div>
+</div>
+
+
+
+
 
 {{-- modal 2 --}}
 <div class="modal fade" id="Albummodal{{$item->id}}" tabindex="-1" aria-labelledby="AlbummodalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="width: 670px">
             <div class="modal-header">
-                <h5 class="modal-title" id="contohModalLabel">Masukan Ke dalam Album</h5>
+                <h5 class="modal-title" id="contohModalLabel">Masukan Ke dalam Album </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
