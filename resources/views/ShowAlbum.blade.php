@@ -1,22 +1,13 @@
+<!-- resources/views/album/show.blade.php -->
+
 @extends('main')
 
 @section('content')
-
-<div class="dropdown-1">
-  <button class="dropbtn">Create New</button>
-  <div class="dropdown-content-1">
-    <a href="/createalbum">Create New Album</a>
-    <a href="/createfoto">Create New Foto</a>
-  </div>
-</div>
-
 <style>
     .grid-container-01 {
         display: grid;
-        grid-template: auto / 12rem 12rem 12rem 12rem;
+        grid-template-columns: repeat(4, 12rem);
         grid-gap: 13px;
-        grid-column: auto;
-        grid-template-areas: 'myArea myArea . . .';
         align-items: start;
     }
 
@@ -25,7 +16,7 @@
         max-height: auto;
     }
 
-    .card-02 {
+    .card-03 {
         display: flex;
         align-items: flex-start;
         flex-wrap: wrap;
@@ -39,35 +30,36 @@
         flex: 1 1 50%;
     }
 
-    </style>
-    <div class="foto">
-        <h1>Kumpulan Foto</h1>
-        <div class="grid-container-01">
-            @foreach ($foto as $item)
-                <div class="card-03">
-                    <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
-                        <div class="card-inform">
-                        <p class="text-judul"> {{$item->judul_foto}} </p>
-                        <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
-                        <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
-                    </div>
-                    <div class="card-akhir-01">
-                        <span class="text-dalem-01">
-                            @php
+</style>
+
+<div class="foto">
+    <h1>Kumpulan Foto</h1>
+    <div class="grid-container-01">
+        @foreach ($foto as $item)
+            <div class="card-03">
+                <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
+                <div class="card-inform">
+                    <p class="text-judul"> {{$item->judul_foto}} </p>
+                    <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
+                    <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
+                </div>
+                <div class="card-akhir-01">
+                    <span class="text-dalem-01">
+                        @php
                             $users = App\Models\User::where('id', $item->foto_id)->get();
-                            @endphp
-                            @foreach($users as $user)
+                        @endphp
+                        @foreach($users as $user)
                             <b>@auth {{ $user->username }} @endauth</b>
-                            @endforeach</span>
-                        <div class="card-tombol-01">
-                                <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
-                                <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
-                        </div>
+                        @endforeach
+                    </span>
+                    <div class="card-tombol-01">
+                        <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
+                        <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
                     </div>
                 </div>
+            </div>
 
-
-                <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="ContohModal{{$item->id}}" tabindex="-1" aria-labelledby="contohModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 900px;">
                     <div class="modal-content" style="width: auto">
@@ -120,7 +112,7 @@
                 </div>
             </div>
 
-            {{-- modal 2 --}}
+            {{-- Modal 2 --}}
             <div class="modal fade" id="Albummodal{{$item->id}}" tabindex="-1" aria-labelledby="AlbummodalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content" style="width: 670px">
@@ -132,8 +124,8 @@
                             <form method="POST" action="{{ route('foto.update.album', ['photo' => $item->id]) }}">
                                 @csrf
                                 <select name="album_id" class="form-control">
-                                    @foreach($albums as $album)
-                                        <option value="{{ $album->id }}">{{ $album->nama_album }}</option>
+                                    @foreach($albumOption as $albums)
+                                        <option value="{{ $albums->id }}">{{ $albums->nama_album }}</option>
                                     @endforeach
                                 </select>
                                 <button type="submit" class="btn btn-primary mt-2">Simpan</button>
@@ -142,11 +134,8 @@
                     </div>
                 </div>
             </div>
-
-                @endforeach
-            </div>
-
-
+        @endforeach
     </div>
+</div>
 
 @endsection

@@ -19,8 +19,8 @@ class Foto extends Model
 
     public function komentarfoto()
     {
-        return $this->belongsToMany(Komentar::class);
-    }
+        return $this->hasMany(Komentar::class);
+        }
 
     public function like()
     {
