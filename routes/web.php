@@ -25,11 +25,8 @@ use App\Http\Controllers\SignupController;
 */
 
 
-Route::get('/studio', function () {
-    return view('layouts.studio', [
-        "title" => "Studio"
-    ]);
-});
+Route::get('/studio', [HomeController::class, 'StudioIndex']);
+
 
 
 // Route Like And Comment
@@ -49,6 +46,7 @@ Route::get ('/createfoto', [FotoController::class, 'create']);
 Route::post('/upload/photo', [FotoController::class, 'upload'])->name('upload.photo');
 Route::get('/foto', [FotoController::class, 'index'])->name('foto');
 Route::get('/createalbum', [AlbumController::class, 'index']);
+Route::get('/albums/{album}', [AlbumController::class, 'show'])->name('album.show');
 Route::post('/album/new', [AlbumController::class, 'store'])->name('album.new');
 Route::post('foto/{photo}/update-album', [FotoController::class, 'updateAlbum'])->name('foto.update.album');
 // Route::get('/creating', [PostController::class, 'index']);

@@ -37,9 +37,15 @@
     <div class="card-03">
         <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
             <div class="card-inform">
-            <p class="text-judul"> {{$item->judul_foto}} </p>
-            <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
-            <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
+                <p class="text-judul"> {{$item->judul_foto}} - Uploaded by: {{$item->user->username}}</p>
+                <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
+            <p class="text-dalem-01">
+                @if($item->album)
+                {{ $item->album->nama_album }}
+                    @else
+                Tidak Masuk Album Mana Pun
+                @endif
+            </p>
         </div>
         <div class="card-akhir-01">
             <span class="text-dalem-01">
@@ -89,28 +95,19 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- Daftar Komentar -->
-                        @if ($comments)
-                            <div class="list-group list-group-flush" style="overflow-y: auto; max-height: 200px;">
-                                {{-- @foreach ($comments as $comment)
-                                    <div class="list-group-item">
-                                        <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
-                                        <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
-                                    </div>
-                                @endforeach --}}
-                                @foreach ($comments as $comment)
-                                    {{-- @if ($comment->post_id == $user_id) --}}
-                                        <div class="list-group-item">
-                                            <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
-                                            <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
-                                        </div>
-                                    {{-- @endif --}}
-                                @endforeach
-
-                            </div>
-                        @else
-                            <p>Tidak ada komentar.</p>
-                        @endif
+                       <!-- Daftar Komentar -->
+                       @if ($item->komentarfoto->count() > 0)
+                       <div class="list-group list-group-flush">
+                           @foreach ($item->komentarfoto as $comment)
+                               <div class="list-group-item">
+                                   <h6 class="list-group-item-heading"><strong>{{ $comment->user->fullname }}</strong> <span class="text-muted ms-2">{{ $comment->created_at->diffForHumans() }}</span></h6>
+                                   <p class="list-group-item-text">{{ $comment->isi_komentar }}</p>
+                               </div>
+                           @endforeach
+                       </div>
+                   @else
+                       <p>Tidak ada komentar.</p>
+                   @endif
                     </div>
                 </div>
             </div>

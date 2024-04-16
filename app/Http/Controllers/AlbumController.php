@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Album;
+use App\Models\Foto;
+use App\Models\Komentar;
 
 class AlbumController extends Controller
 {
@@ -23,5 +25,19 @@ class AlbumController extends Controller
 Album::create($v);
 return redirect('/studio');
     }
+    public function show(Album $album)
+    {
+        $foto = Foto::all();
+        $komentar = Komentar::all();
+        $albumOption = Album::all();
+        return view('ShowAlbum', [
+            'title' => 'Album/' . $album->nama_album,
+            'album' => $album,
+            'albumOption' => $albumOption,
+            "foto" => $foto ,
+            "comments" => $komentar
+        ]);
+    }
+
 
 }
