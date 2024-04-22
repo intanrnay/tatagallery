@@ -49,7 +49,13 @@
                         <div class="card-inform">
                         <p class="text-judul"> {{$item->judul_foto}} </p>
                         <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
-                        <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
+                        <p class="text-dalem-01">
+                            @if($item->album)
+                            {{ $item->album->nama_album }}
+                            @else
+                            <p style="color: rgb(147, 185, 255);">Didn't have an album</p>
+                            @endif
+                        </p>
                     </div>
                     <div class="card-akhir-01">
                         <span class="text-dalem-01">
@@ -91,6 +97,8 @@
                                                 <span>{{ $item->like->count() }}</span>
                                             </form>
                                         </div>
+
+
                                         <!-- Form Komentar -->
                                         <form class="card-footer-01" method="POST" action="{{ route('komentar.store', ['photo' => $item->id]) }}">
                                             @csrf
@@ -145,8 +153,20 @@
 
                 @endforeach
             </div>
+    </div>
 
-
+    <div class="album">
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Album</h1>
+        <div class="grid-container-02">
+            @foreach ($albums as $album)
+                <a href="{{ route('album.show', ['album' => $album->id]) }}" class="card-03">
+                    <div class="card-inform">
+                        <p class="text-judul">{{ $album->nama_album }}</p>
+                        <p class="text-dalem-01">{{ $album->deskripsi }}</p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
     </div>
 
 @endsection

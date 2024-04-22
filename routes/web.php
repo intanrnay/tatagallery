@@ -50,3 +50,4 @@ Route::get('/createalbum', [AlbumController::class, 'index']);
 Route::get('/albums/{album}', [AlbumController::class, 'show'])->name('album.show');
 Route::post('/album/new', [AlbumController::class, 'store'])->name('album.new');
 Route::post('foto/{photo}/update-album', [FotoController::class, 'updateAlbum'])->name('foto.update.album');
+// Route::get('/destroy', [FotoController::class, ''])->name('photos.destroy');

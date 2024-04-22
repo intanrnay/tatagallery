@@ -208,7 +208,7 @@ a:hover {
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
 @endif
-  
+
   <div class="wrapper bg-white">
     <div class="h2 text-center">Bluespace</div>
     <div class="h4 text-muted text-center pt-2">Enter your login details</div>
@@ -216,7 +216,7 @@ a:hover {
       @csrf
         <div class="form-group py-2">
           <div class="input-field"> <span class="far fa-user p-2"></span>
-              <input type="email" name="email" class="@error('email') is-invalid @enderror" id="email" placeholder="Username or Email Address" autofocus required value="{{ old('email') }}">
+              <input type="email" name="email" class="@error('email') is-invalid @enderror" id="email" placeholder="Email Address" autofocus required value="{{ old('email') }}">
               @error('email')
               <div class="invalid-feedback">
                 {{ $message }}

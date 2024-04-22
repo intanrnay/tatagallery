@@ -27,16 +27,16 @@
 <body class="">
   <main class="main-content  mt-0">
     <section>
-     <div class="container"> 
+     <div class="container">
       {{-- <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5"> --}}
       <form action="/sign-up" class="form" method="POST">
         @csrf
         <p class="title">Register </p>
         <p class="message">Signup now and get full access to our app. </p>
-         
+
         <label>
         <input type="text" name="fullname" class="input @error('fullname') is-invalid @enderror" id="fullname" required value="{{  old('fullname') }}">
-        <span>Fullname</span>  
+        <span>Fullname</span>
           @error('fullname')
           <div class="invalid-feedback">
             {{  $message }}
@@ -53,7 +53,7 @@
           </div>
           @enderror
         </label>
-          
+
         <label>
           <input type="text" name="address" class="input @error('address') is-invalid @enderror" id="address" required value="{{  old('address') }}">
             <span>Address</span>
@@ -62,8 +62,8 @@
               {{  $message }}
             </div>
             @enderror
-        </label> 
-            
+        </label>
+
         <label>
           <input type="text" name="username" class="input @error('username') is-invalid @enderror" id="username" required="min:7|max:15|unique:users" value="{{  old('username') }}">
             <span>Username</span>
@@ -99,7 +99,7 @@
             <span>Confirm password</span>
         </label> --}}
         <button class="submit">Submit</button>
-        <p class="signin">Already have an acount? <a href="/sign-in">Signin</a> </p>
+        <p class="signin">Already have an acount? <a href="/sign-in">Login</a> </p>
          </form>
         </div>
       </div>

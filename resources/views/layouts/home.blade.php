@@ -32,15 +32,21 @@
 
 </style>
 <div class="foto">
-    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Photos</h1>
+    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">Home</h1>
     <div class="grid-container-01">
         @foreach ($foto as $item)
             <div class="card-03">
                 <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
                     <div class="card-inform">
-                    <p class="text-judul"> {{$item->judul_foto}} </p>
+                    <p class="text-judul">{{$item->user->username}} : {{$item->judul_foto}}</p>
                     <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
-                    <p class="text-dalem-01"> {{ optional($item->album)->nama_album }} </p>
+                    <p class="text-dalem-01">
+                        @if($item->album)
+                        {{ $item->album->nama_album }}
+                        @else
+                        <p style="color: rgb(147, 185, 255);">Didn't have an album</p>
+                        @endif
+                    </p>
                 </div>
                 <div class="card-akhir-01">
                     <span class="text-dalem-01">
@@ -53,6 +59,11 @@
                     <div class="card-tombol-01">
                             <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
                             <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
+                            {{-- <form action="{{ route('photos.destroy', $item->foto_id)}}" method="POST" class="card-tombol-01">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="tombol-delete">Delete</button>
+                            </form> --}}
                     </div>
                 </div>
             </div>
@@ -136,21 +147,7 @@
 
             @endforeach
         </div>
-
-
 </div>
-<div class="album">
-    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Album</h1>
-    <div class="grid-container-02">
-        @foreach ($albums as $album)
-            <a href="{{ route('album.show', ['album' => $album->id]) }}" class="card-03">
-                <div class="card-inform">
-                    <p class="text-judul">{{ $album->nama_album }}</p>
-                    <p class="text-dalem-01">{{ $album->deskripsi }}</p>
-                </div>
-            </a>
-        @endforeach
-    </div>
-</div>
+
 
 @endsection

@@ -37,7 +37,7 @@
     <div class="card-03">
         <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
             <div class="card-inform">
-                <p>Uploaded by: {{$item->user->username}}</p>
+                <p class="text-judul">Uploaded by: {{$item->user->username}}</p>
                 <p class="text-judul"> {{$item->judul_foto}}</p>
                 <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
             <p class="text-dalem-01">
@@ -59,6 +59,11 @@
             <div class="card-tombol-01">
                     <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#ContohModal{{$item->id}}">Details</button>
                     <button type="button" class="tombol-modal" data-bs-toggle="modal" data-bs-target="#Albummodal{{$item->id}}">Album</button>
+                    <form action="{{ route('photos.destroy', $item->id)}}" method="POST" class="card-tombol-01">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="tombol-delete">Delete</button>
+                    </form>
             </div>
         </div>
     </div>
@@ -117,10 +122,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 {{-- modal 2 --}}

@@ -37,7 +37,7 @@
 }
 
 .text-judul {
-    font-weight: 900;
+    font-weight: 600;
     font-size: 1em;
     line-height: 1.5;
     color: #ffffff;
@@ -118,3 +118,16 @@
 .tombol-like {
     margin-top: 20px;
 }
+
+.tombol-delete {
+border: 1px solid #736be050;
+padding: 0.3em;
+cursor: pointer;
+border-radius: 9px;
+transition: 0.3s ease-in-out;
+margin-left: 10px;
+background-color: #d8e3f7d2;
+color: #010b36;
+display: inline-block;
+}
+
