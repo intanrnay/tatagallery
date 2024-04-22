@@ -33,7 +33,8 @@
 </style>
 
 <div class="foto">
-    <h1>Kumpulan Foto</h1>
+    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin-left:16px;">The photos :</h1>
+    <br>
     <div class="grid-container-01">
         @foreach ($foto as $item)
             <div class="card-03">

@@ -24,19 +24,24 @@ class HomeController extends Controller
         ]);
 
     }
+
     public function StudioIndex()
-    {
+{
+    if (Auth::check()) {
         $user = Auth::user();
         $foto = Foto::where('user_id', $user->id)->get();
         $komentar = Komentar::all();
         $albums = Album::all();
         return view('layouts.studio', [
             'title' => 'Studio',
-            "foto" => $foto ,
+            "foto" => $foto,
             "comments" => $komentar,
             "albums" => $albums
         ]);
-
+    } else {
+        return redirect()->route('sign-in');
     }
+}
+
 
 }

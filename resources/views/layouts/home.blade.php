@@ -32,7 +32,7 @@
 
 </style>
 <div class="foto">
-    <h1>Kumpulan Foto</h1>
+    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Photos</h1>
     <div class="grid-container-01">
         @foreach ($foto as $item)
             <div class="card-03">
@@ -140,13 +140,10 @@
 
 </div>
 <div class="album">
-    <h1>Kumpulan Album</h1>
+    <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Album</h1>
     <div class="grid-container-02">
         @foreach ($albums as $album)
             <a href="{{ route('album.show', ['album' => $album->id]) }}" class="card-03">
-                <div class="card-foto">
-                    <p>{{ $album->nama_album }}</p>
-                </div>
                 <div class="card-inform">
                     <p class="text-judul">{{ $album->nama_album }}</p>
                     <p class="text-dalem-01">{{ $album->deskripsi }}</p>

@@ -41,7 +41,7 @@
 
     </style>
     <div class="foto">
-        <h1>Kumpulan Foto</h1>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size:25px; margin:21px;">My Photos</h1>
         <div class="grid-container-01">
             @foreach ($foto as $item)
                 <div class="card-03">

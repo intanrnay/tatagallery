@@ -1,6 +1,6 @@
 @extends('main')
 @section('content')
-            {{-- <P>{{$item->tanggal_unggah}}</P> --}}
+
 <style>
 .grid-container-01 {
     display: grid;
@@ -37,12 +37,13 @@
     <div class="card-03">
         <div class="card-foto"><img src="{{ asset('storage/foto/'.$item->lokasi_file)}}" style="width: 160px; height:150px"></div>
             <div class="card-inform">
-                <p class="text-judul"> {{$item->judul_foto}} - Uploaded by: {{$item->user->username}}</p>
+                <p>Uploaded by: {{$item->user->username}}</p>
+                <p class="text-judul"> {{$item->judul_foto}}</p>
                 <p class="text-dalem-01"> {{$item->deskripsi_foto}} </p>
             <p class="text-dalem-01">
                 @if($item->album)
                 {{ $item->album->nama_album }}
-                    @else
+                @else
                 Tidak Masuk Album Mana Pun
                 @endif
             </p>
@@ -86,6 +87,8 @@
                                     <span>{{ $item->like->count() }}</span>
                                 </form>
                             </div>
+
+
                             <!-- Form Komentar -->
                             <form class="card-footer-01" method="POST" action="{{ route('komentar.store', ['photo' => $item->id]) }}">
                                 @csrf
@@ -114,6 +117,7 @@
         </div>
     </div>
 </div>
+
 
 
 

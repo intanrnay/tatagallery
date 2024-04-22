@@ -27,7 +27,7 @@ return redirect('/studio');
     }
     public function show(Album $album)
     {
-        $foto = Foto::all();
+        $foto = Foto::where('album_id', $album->id)->get();
         $komentar = Komentar::all();
         $albumOption = Album::all();
         return view('ShowAlbum', [

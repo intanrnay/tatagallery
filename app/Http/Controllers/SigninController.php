@@ -30,7 +30,7 @@ class SigninController extends Controller
         return back()->with('loginError', 'Boo, you failed');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
     Auth::logout();
  
