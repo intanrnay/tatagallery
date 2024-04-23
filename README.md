@@ -18,13 +18,13 @@ Untuk bisa mengakses website ini, anda tinggal membuat akun pada halaman sign up
 
 ## Entity Relationship Diagram, Unified Modeling Language, dan Relasi
 
-<h4 align="center">Entity Relationship Diagram</h4>
+<h2 align="center">Entity Relationship Diagram</h2>
 
 ![erd](https://github.com/intanrnay/tatagallery/assets/140694462/3f40fd50-9cc4-4bb2-a123-85980c5af55e)
-<h4 align="center">Unified Modeling Language</h4>
+<h2 align="center">Unified Modeling Language</h2>
 
 ![uml](https://github.com/intanrnay/tatagallery/assets/140694462/12f50f35-39d0-472f-ae1e-87deb1255aab)
-<h4 align="center">Relasi</h4>
+<h2 align="center">Relasi</h2>
 
 ![Screenshot (23)](https://github.com/intanrnay/tatagallery/assets/140694462/0ebd92ac-c85d-42a1-b012-092324aa6cac)
 
@@ -75,13 +75,23 @@ php artisan serve
 ![Screenshot (13)](https://github.com/intanrnay/tatagallery/assets/140694462/d37e053e-a75c-492e-8005-695bf566e2b1)
 <h3 align="center">Studio</h3>
 
-![Screenshot (11)](https://github.com/intanrnay/tatagallery/assets/140694462/657310af-b619-4d64-a545-856e0ea5ce8b)
+![Screenshot (17)](https://github.com/intanrnay/tatagallery/assets/140694462/10f6c16c-d2fb-4149-a9f2-4dd08bd32205)
+
 <h3 align="center">Sign Up</h3>
 
 ![Screenshot (8)](https://github.com/intanrnay/tatagallery/assets/140694462/34ec73ab-6c0a-4018-bc3b-e6a9ba40ee63)
 <h3 align="center">Sign In</h3>
 
 ![Screenshot (7)](https://github.com/intanrnay/tatagallery/assets/140694462/bdde40e3-73f4-47d3-8c81-1914bfbe7896)
+<h3 align="center">Create</h3>
+
+![Screenshot (26)](https://github.com/intanrnay/tatagallery/assets/140694462/657f2637-87e0-4156-9d89-c4042aab437b)
+<h3 align="center">Create Foto</h3>
+
+![Screenshot (27)](https://github.com/intanrnay/tatagallery/assets/140694462/36d16f18-9749-4011-81e3-c327ab38f89a)
+<h3 align="center">Create Album</h3>
+
+![Screenshot (11)](https://github.com/intanrnay/tatagallery/assets/140694462/657310af-b619-4d64-a545-856e0ea5ce8b)
 <h3 align="center">Post Photo</h3>
 
 ![Screenshot (9)](https://github.com/intanrnay/tatagallery/assets/140694462/3dfb2e74-a3b8-42c8-a186-a5e61838c63f)
@@ -98,6 +108,19 @@ php artisan serve
 
 ![Screenshot (18)](https://github.com/intanrnay/tatagallery/assets/140694462/d1a89add-c664-44ff-973b-ec01a455315d)
 
-
+## Fitur
+Beberapa fitur di bawah ini yang sudah berjalan dengan baik, diantaranya :
+1. Website sudah bisa berjalan dengan multiuser
+2. Sign Up
+3. Sign In
+4. Logout
+5. Post Foto
+6. Post Album
+7. Menambah Komentar
+8. Like Foto
+9. Unlike Foto
+10. View Foto
+11. View Album
+    
 ## Note
 Website masih dalam proses pengembangan sehingga masih ada beberapa fitur yang belum bisa digunakan seperti delete post, delete komentar, dan delete album. untuk itu, disarankan untuk menggunakan fitur yang sudah berjalan seperti posting foto, like, comment atau membuat album. Terima Kasih <3
