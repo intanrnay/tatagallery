@@ -1,4 +1,4 @@
-<h1 align="center">Bluespace</h1>
+<h1 align="center"style="color:#0016a8;">Bluespace</h1>
 
 ## Tentang
 <p>Bluespace merupakan sebuah website kecil yang dibuat untuk menyimpan gambar layaknya sebuah gallery.</p>
@@ -19,12 +19,13 @@ Untuk bisa mengakses website ini, anda tinggal membuat akun pada halaman sign up
 ## Entity Relationship Diagram, Unified Modeling Language, dan Relasi
 
 <h4 align="center">Entity Relationship Diagram</h4>
+
 ![erd](https://github.com/intanrnay/tatagallery/assets/140694462/3f40fd50-9cc4-4bb2-a123-85980c5af55e)
-
 <h4 align="center">Unified Modeling Language</h4>
-![uml](https://github.com/intanrnay/tatagallery/assets/140694462/12f50f35-39d0-472f-ae1e-87deb1255aab)
 
+![uml](https://github.com/intanrnay/tatagallery/assets/140694462/12f50f35-39d0-472f-ae1e-87deb1255aab)
 <h4 align="center">Relasi</h4>
+
 ![Screenshot (23)](https://github.com/intanrnay/tatagallery/assets/140694462/0ebd92ac-c85d-42a1-b012-092324aa6cac)
 
 ## Instalasi
