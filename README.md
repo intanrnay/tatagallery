@@ -67,7 +67,6 @@ php artisan migrate
 7. Jalankan Serve
 ```
 php artisan serve
-```
 
 ## Tampilan Website
 <h3 align="center">Homepage</h3>
