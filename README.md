@@ -1,4 +1,4 @@
-<h1 align="center"style="color:#0016a8;">Bluespace</h1>
+<h1 align="center">Bluespace</h1>
 
 ## Tentang
 <p>Bluespace merupakan sebuah website kecil yang dibuat untuk menyimpan gambar layaknya sebuah gallery.</p>
