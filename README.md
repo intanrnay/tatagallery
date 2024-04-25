@@ -23,7 +23,7 @@ Untuk bisa mengakses website ini, anda tinggal membuat akun pada halaman sign up
 ![erd](https://github.com/intanrnay/tatagallery/assets/140694462/3f40fd50-9cc4-4bb2-a123-85980c5af55e)
 <h2 align="center">Unified Modeling Language</h2>
 
-![uml](https://github.com/intanrnay/tatagallery/assets/140694462/12f50f35-39d0-472f-ae1e-87deb1255aab)
+![uml 2](https://github.com/intanrnay/tatagallery/assets/140694462/5431e8a2-1c71-42f9-a51a-af09be7891e4)
 <h2 align="center">Relasi</h2>
 
 ![Screenshot (23)](https://github.com/intanrnay/tatagallery/assets/140694462/0ebd92ac-c85d-42a1-b012-092324aa6cac)
@@ -89,7 +89,7 @@ Website masih dalam proses pengembangan sehingga masih ada beberapa fitur yang b
 ## Terakhir, Instalasi
 1. Clone Repository
 ```
-https://github.com/Kuro192/UKK_Gallery.git
+https://github.com/intanrnay/tatagallery
 ```
 
 2. Install Composer
@@ -122,6 +122,7 @@ php artisan key:generate
 6. Jalankan migrate dan seeder
 ```
 php artisan migrate
+```
 
 7. Jalankan Serve
 ```
